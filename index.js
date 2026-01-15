@@ -25,20 +25,20 @@ mongoose.connect(process.env.MONGO_URI)
 
 /* -------------------- MAIL SETUP (FIXED) -------------------- */
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
+  host: process.env.BREVO_SMTP_HOST,
+  port: process.env.BREVO_SMTP_PORT,
   secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.BREVO_SMTP_USER, 
+    pass: process.env.BREVO_SMTP_PASS,
   },
 });
 
 transporter.verify((err) => {
   if (err) {
-    console.error("❌ Gmail SMTP Error:", err);
+    console.error("❌ Brevo SMTP Error:", err);
   } else {
-    console.log("✅ Gmail SMTP Ready");
+    console.log("✅ Brevo SMTP Ready");
   }
 });
 
