@@ -25,22 +25,24 @@ mongoose.connect(process.env.MONGO_URI)
 
 /* -------------------- MAIL SETUP (FIXED) -------------------- */
 const transporter = nodemailer.createTransport({
-  host: process.env.BREVO_SMTP_HOST,
-  port: process.env.BREVO_SMTP_PORT,
+  host: "smtp.gmail.com",
+  port: 587,
   secure: false,
   auth: {
-    user: process.env.BREVO_SMTP_USER, 
-    pass: process.env.BREVO_SMTP_PASS,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
 transporter.verify((err) => {
   if (err) {
-    console.error("❌ Brevo SMTP Error:", err);
+    console.error("❌ Gmail SMTP Error:", err);
   } else {
-    console.log("✅ Brevo SMTP Ready");
+    console.log("✅ Gmail SMTP Ready");
   }
 });
+
+
 
 const ADMIN_EMAIL = "rajravi94886@gmail.com";
 
