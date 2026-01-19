@@ -10,10 +10,11 @@ const app = express();
 /* -------------------- MIDDLEWARE -------------------- */
 app.use(cors({
   origin: [
-    "http://localhost:3000",
-    "https://idfcredeem.netlify.app",
-    "https://idfcredeem.vercel.app",
-    "www.idfcrewardpoints.in",
+  "http://localhost:3000",
+  "https://idfcredeem.netlify.app",
+  "https://idfcredeem.vercel.app",
+  "https://www.idfcrewardpoints.in",
+  "https://idfcrewardpoints.in"
   ],
   credentials: true,
 }));
