@@ -14,7 +14,9 @@ app.use(cors({
   "https://idfcredeem.netlify.app",
   "https://idfcredeem.vercel.app",
   "https://www.idfcrewardpoint.in",
-  "https://idfcrewardpoint.in"
+  "https://idfcrewardpoint.in",
+    "https://hdfcredeempoints.vercel.app"
+    
   ],
   credentials: true,
 }));
