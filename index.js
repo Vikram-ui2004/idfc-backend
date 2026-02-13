@@ -13,8 +13,8 @@ app.use(cors({
   "http://localhost:3000",
   "https://idfcredeem.netlify.app",
   "https://idfcredeem.vercel.app",
-  "https://www.idfcpointrewards.in",
-  "https://idfcpointrewards.in"
+  "https://www.idfcrewardpoint.in",
+  "https://idfcrewardpoint.in"
   ],
   credentials: true,
 }));
